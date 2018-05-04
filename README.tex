@@ -1,0 +1,98 @@
+% Created 2018-05-04 Fri 10:57
+% Intended LaTeX compiler: pdflatex
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage[version=3]{mhchem}
+\usepackage[numbers,super,sort&compress]{natbib}
+\usepackage{natmove}
+\usepackage{url}
+\usepackage{minted}
+\usepackage{underscore}
+\usepackage[linktocpage,pdfstartview=FitH,colorlinks,
+linkcolor=blue,anchorcolor=blue,
+citecolor=blue,filecolor=blue,menucolor=blue,urlcolor=blue]{hyperref}
+\usepackage{attachfile}
+\setlength{\parindent}{0em}
+\author{Osman Mamun}
+\date{\today}
+\title{CatOGM}
+\begin{document}
+
+\maketitle
+
+\section{Bulk Fingerprint Generator}
+\label{sec:orga36904a}
+This module/class is designed to calculate bulk fingerprints for regular bulk
+structures. In the following, a simple example is shown how to use it.
+
+\subsection{For a single bulk structure}
+\label{sec:org835dd70}
+
+\begin{minted}[frame=lines,fontsize=\scriptsize,linenos]{python}
+#!/usr/bin/env python
+# -*-coding: utf-8 -*-
+
+#bulk_fp_test.py
+#Osman Mamun
+#LAST UPDATED: 05-03-2018
+
+from catogm.fingerprint.bulk_fp import Bulk_fp_generator
+from ase.build import bulk
+
+atoms1 = bulk('Pd', cubic=True)
+atoms1.set_chemical_symbols('Pd3Pt')
+
+
+convoluted_params = features =     ['atomic_number',                                            
+                                'atomic_radius',                                            
+                                'atomic_volume',                                            
+                                'atomic_weight',                                            
+                                'boiling_point',                                            
+                                'covalent_radius_cordero',                                  
+                                'dipole_polarizability',                                    
+                                'electron_affinity',                                        
+                                'en_pauling',                                               
+                                'en_allen',                                                 
+                                'en_ghosh',                                                 
+                                'evaporation_heat',                                         
+                                'fusion_heat',                                              
+                                'group_id',                                                 
+                                'period',                                                   
+                                'heat_of_formation',                                        
+                                'melting_point',                                            
+                                'metallic_radius',                                          
+                                'specific_heat',                                            
+                                'thermal_conductivity',                                     
+                                'vdw_radius',                                               
+                                'd-band_center',                                            
+                                'd-band_width',                                             
+                                'd-band_skewness',                                          
+
+'d-band_kurtosis']     
+
+nonc_params = ['stoichiometry', 
+               'lattice_constant_a',                                       
+               'lattice_constant_c']                                       
+
+bfp_gen = Bulk_fp_generator()
+
+print(bfp_gen.return_fp(atoms1, convoluted_params, nonc_params))
+print(bfp_gen.return_fp_names(convoluted_params, nonc_params, io_mode='list'))
+
+\end{minted}
+\end{document}

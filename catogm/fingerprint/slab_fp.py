@@ -16,7 +16,7 @@ import multiprocessing
 from tqdm import tqdm
 
 class Slab_fp_generator():
-    """class to generate bulk fingerprint for A1, L10, and L12 structures"""
+    """class to generate slab fingerprint for A1, L10, and L12 structures"""
     
     def __init__(self):
         """Initialize the class.
@@ -32,7 +32,7 @@ class Slab_fp_generator():
         return get_voronoi_neighbors(atoms)
 
     def _get_slab_d_data(self):
-        """Returns the bulk d band data dictionary"""
+        """Returns the slab d band data dictionary"""
         
         import catogm
         path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
@@ -60,7 +60,6 @@ class Slab_fp_generator():
                 if cc != 0:
                     node_dict[1].extend(cc * [[atoms[i].symbol, 
                                                atoms[j].symbol]])
-
         return node_dict
 
     def return_fp_list(self, atoms, convoluted_params):
