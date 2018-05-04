@@ -8,8 +8,11 @@
 from catogm.fingerprint.bulk_fp import Bulk_fp_generator
 from ase.build import bulk
 
-atoms = bulk('Pd', cubic=True)
-atoms.set_chemical_symbols('Pd3Pt')
+atoms1 = bulk('Pd', cubic=True)
+atoms1.set_chemical_symbols('Al3Pt')
+atoms2 = bulk('Pd', cubic=True)
+atoms2.set_chemical_symbols('Pd3Pt')
+atoms3 = bulk('Pd', cubic=True)
 
 convoluted_params = features = ['atomic_number',                                            
                                 'atomic_radius',                                            
@@ -43,5 +46,7 @@ nonc_params = ['stoichiometry',
 
 bfp_gen = Bulk_fp_generator()
 
-print(bfp_gen.return_fp_vec(atoms, convoluted_params, nonc_params, node=2))
+list_atoms = [atoms1, atoms2, atoms3]
+print(bfp_gen.return_fp(list_atoms, convoluted_params, nonc_params))
+print(bfp_gen.return_fp_names(convoluted_params, nonc_params, io_mode='list'))
 
