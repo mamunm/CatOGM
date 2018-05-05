@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*-coding: utf-8 -*-
 
-#bulk_fp.py
+#slab_fp.py
 #Osman Mamun
 #LAST UPDATED: 05-02-2018
 

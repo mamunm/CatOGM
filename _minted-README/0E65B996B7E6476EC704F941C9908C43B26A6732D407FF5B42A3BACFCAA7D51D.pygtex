@@ -1,0 +1,48 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{from} \PYG{n+nn}{catogm.fingerprint.bulk\PYGZus{}fp} \PYG{k+kn}{import} \PYG{n}{Bulk\PYGZus{}fp\PYGZus{}generator}
+\PYG{k+kn}{from} \PYG{n+nn}{ase.build} \PYG{k+kn}{import} \PYG{n}{bulk}
+
+\PYG{n}{atoms1} \PYG{o}{=} \PYG{n}{bulk}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Pd\PYGZsq{}}\PYG{p}{,} \PYG{n}{cubic}\PYG{o}{=}\PYG{n+nb+bp}{True}\PYG{p}{)}
+\PYG{n}{atoms1}\PYG{o}{.}\PYG{n}{set\PYGZus{}chemical\PYGZus{}symbols}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Pd3Pt\PYGZsq{}}\PYG{p}{)}
+
+
+\PYG{n}{convoluted\PYGZus{}params} \PYG{o}{=} \PYG{n}{features} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}atomic\PYGZus{}number\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}atomic\PYGZus{}radius\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}atomic\PYGZus{}volume\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}atomic\PYGZus{}weight\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}boiling\PYGZus{}point\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}covalent\PYGZus{}radius\PYGZus{}cordero\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}dipole\PYGZus{}polarizability\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}electron\PYGZus{}affinity\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}en\PYGZus{}pauling\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}en\PYGZus{}allen\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}en\PYGZus{}ghosh\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}evaporation\PYGZus{}heat\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}fusion\PYGZus{}heat\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}group\PYGZus{}id\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}period\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}heat\PYGZus{}of\PYGZus{}formation\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}melting\PYGZus{}point\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}metallic\PYGZus{}radius\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}specific\PYGZus{}heat\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}thermal\PYGZus{}conductivity\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}vdw\PYGZus{}radius\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}d\PYGZhy{}band\PYGZus{}center\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}d\PYGZhy{}band\PYGZus{}width\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}d\PYGZhy{}band\PYGZus{}skewness\PYGZsq{}}\PYG{p}{,}
+                                \PYG{l+s+s1}{\PYGZsq{}d\PYGZhy{}band\PYGZus{}kurtosis\PYGZsq{}}\PYG{p}{]}
+
+\PYG{n}{nonc\PYGZus{}params} \PYG{o}{=} \PYG{p}{[}\PYG{l+s+s1}{\PYGZsq{}stoichiometry\PYGZsq{}}\PYG{p}{,}
+               \PYG{l+s+s1}{\PYGZsq{}lattice\PYGZus{}constant\PYGZus{}a\PYGZsq{}}\PYG{p}{,}
+               \PYG{l+s+s1}{\PYGZsq{}lattice\PYGZus{}constant\PYGZus{}c\PYGZsq{}}\PYG{p}{]}
+
+\PYG{n}{bfp\PYGZus{}gen} \PYG{o}{=} \PYG{n}{Bulk\PYGZus{}fp\PYGZus{}generator}\PYG{p}{()}
+
+\PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{Bulk fingerprints:}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{n}{fp\PYGZus{}names} \PYG{o}{=} \PYG{n}{bfp\PYGZus{}gen}\PYG{o}{.}\PYG{n}{return\PYGZus{}fp\PYGZus{}names}\PYG{p}{(}\PYG{n}{convoluted\PYGZus{}params}\PYG{p}{,} \PYG{n}{nonc\PYGZus{}params}\PYG{p}{,} \PYG{n}{io\PYGZus{}mode}\PYG{o}{=}\PYG{l+s+s1}{\PYGZsq{}list\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n}{fp\PYGZus{}names}\PYG{p}{:}
+    \PYG{k}{print}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}
+
+\PYG{k}{print}\PYG{p}{(}\PYG{l+s+s1}{\PYGZsq{}Computed bulk fingerprints are:}\PYG{l+s+se}{\PYGZbs{}n}\PYG{l+s+s1}{\PYGZsq{}}\PYG{p}{)}
+\PYG{k}{print}\PYG{p}{(}\PYG{n}{bfp\PYGZus{}gen}\PYG{o}{.}\PYG{n}{return\PYGZus{}fp}\PYG{p}{(}\PYG{n}{atoms1}\PYG{p}{,} \PYG{n}{convoluted\PYGZus{}params}\PYG{p}{,} \PYG{n}{nonc\PYGZus{}params}\PYG{p}{))}
+\end{Verbatim}
