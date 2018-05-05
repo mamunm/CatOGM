@@ -3,15 +3,10 @@
 #+OPTIONS: toc:nil
 #+LATEX_HEADER: \setlength{\parindent}{0em}
 
-\maketitle
-
 * Bulk Fingerprint Generator
-This module/class is designed to calculate bulk fingerprints for regular bulk
-structures. In the following, a simple example is shown how to use it.
+This module/class is designed to calculate bulk fingerprints for regular bulk structures. In the following, a simple example is shown how to use it.
 
 ** For a single bulk structure 
-
-
 #+BEGIN_SRC python :pyhton /usr/bin/env :results output :exports both
 from catogm.fingerprint.bulk_fp import Bulk_fp_generator
 from ase.build import bulk
@@ -19,36 +14,37 @@ from ase.build import bulk
 atoms1 = bulk('Pd', cubic=True)
 atoms1.set_chemical_symbols('Pd3Pt')
 
+convoluted_params = [
+    'atomic_number',
+    'atomic_radius',                                            
+    'atomic_volume',                                            
+    'atomic_weight',                                            
+    'boiling_point',                                            
+    'covalent_radius_cordero',                                  
+    'dipole_polarizability',                                    
+    'electron_affinity',                                        
+    'en_pauling',                                               
+    'en_allen',                                                 
+    'en_ghosh',                                                 
+    'evaporation_heat',                                         
+    'fusion_heat',                                              
+    'group_id',                                                 
+    'period',                                                   
+    'heat_of_formation',                                        
+    'melting_point',                                            
+    'metallic_radius',                                          
+    'specific_heat',                                            
+    'thermal_conductivity',                                     
+    'vdw_radius',                                               
+    'd-band_center',                                            
+    'd-band_width',                                             
+    'd-band_skewness',                                          
+    'd-band_kurtosis']     
 
-convoluted_params = features = ['atomic_number',
-                                'atomic_radius',                                            
-                                'atomic_volume',                                            
-                                'atomic_weight',                                            
-                                'boiling_point',                                            
-                                'covalent_radius_cordero',                                  
-                                'dipole_polarizability',                                    
-                                'electron_affinity',                                        
-                                'en_pauling',                                               
-                                'en_allen',                                                 
-                                'en_ghosh',                                                 
-                                'evaporation_heat',                                         
-                                'fusion_heat',                                              
-                                'group_id',                                                 
-                                'period',                                                   
-                                'heat_of_formation',                                        
-                                'melting_point',                                            
-                                'metallic_radius',                                          
-                                'specific_heat',                                            
-                                'thermal_conductivity',                                     
-                                'vdw_radius',                                               
-                                'd-band_center',                                            
-                                'd-band_width',                                             
-                                'd-band_skewness',                                          
-                                'd-band_kurtosis']     
-
-nonc_params = ['stoichiometry', 
-               'lattice_constant_a',                                       
-               'lattice_constant_c']                                       
+nonc_params = [
+    'stoichiometry', 
+    'lattice_constant_a',                                       
+    'lattice_constant_c']                                       
 
 bfp_gen = Bulk_fp_generator()
 
@@ -137,9 +133,7 @@ Computed bulk fingerprints are:
  1.71200649e+08]
 #+end_example
 
-** For a list of bulk structures 
-
-
+** For a list of bulk structures
 #+BEGIN_SRC python :pyhton /usr/bin/env :results output :exports both
 from catogm.fingerprint.bulk_fp import Bulk_fp_generator
 from ase.build import bulk
@@ -150,35 +144,37 @@ atoms2.set_chemical_symbols('Pd3Pt')
 atoms3 = bulk('Pd', cubic=True)
 atoms3.set_chemical_symbols('Pd2Pt2')
 
-convoluted_params = features = ['atomic_number',
-                                'atomic_radius',                                            
-                                'atomic_volume',                                            
-                                'atomic_weight',                                            
-                                'boiling_point',                                            
-                                'covalent_radius_cordero',                                  
-                                'dipole_polarizability',                                    
-                                'electron_affinity',                                        
-                                'en_pauling',                                               
-                                'en_allen',                                                 
-                                'en_ghosh',                                                 
-                                'evaporation_heat',                                         
-                                'fusion_heat',                                              
-                                'group_id',                                                 
-                                'period',                                                   
-                                'heat_of_formation',                                        
-                                'melting_point',                                            
-                                'metallic_radius',                                          
-                                'specific_heat',                                            
-                                'thermal_conductivity',                                     
-                                'vdw_radius',                                               
-                                'd-band_center',                                            
-                                'd-band_width',                                             
-                                'd-band_skewness',                                          
-                                'd-band_kurtosis']     
+convoluted_params = [
+    'atomic_number',
+    'atomic_radius',                                            
+    'atomic_volume',                                            
+    'atomic_weight',                                            
+    'boiling_point',                                            
+    'covalent_radius_cordero',                                  
+    'dipole_polarizability',                                    
+    'electron_affinity',                                        
+    'en_pauling',                                               
+    'en_allen',                                                 
+    'en_ghosh',                                                 
+    'evaporation_heat',                                         
+    'fusion_heat',                                              
+    'group_id',                                                 
+    'period',                                                   
+    'heat_of_formation',                                        
+    'melting_point',                                            
+    'metallic_radius',                                          
+    'specific_heat',                                            
+    'thermal_conductivity',                                     
+    'vdw_radius',                                               
+    'd-band_center',                                            
+    'd-band_width',                                             
+    'd-band_skewness',                                          
+    'd-band_kurtosis']     
 
-nonc_params = ['stoichiometry', 
-               'lattice_constant_a',                                       
-               'lattice_constant_c']                                       
+nonc_params = [
+    'stoichiometry', 
+    'lattice_constant_a',                                       
+    'lattice_constant_c']                                       
 
 bfp_gen = Bulk_fp_generator()
 
@@ -190,7 +186,6 @@ for i in fp_names:
 list_atoms = [atoms1, atoms2, atoms3]
 print('\nComputed bulk fingerprints are:\n')
 print(bfp_gen.return_fp(list_atoms, convoluted_params, nonc_params))
-
 #+END_SRC 
 
 #+RESULTS:
@@ -298,43 +293,41 @@ Computed bulk fingerprints are:
 #+end_example
 
 * Slab Fingerprint Generator
-
 This module/class is designed to calculate slab fingerprints for regular bulk structures. In the following, we show a simple example on how to use it.
 
 ** For a single slab structure
-
 #+BEGIN_SRC python :output results :exports both
 from catogm.fingerprint.slab_fp import Slab_fp_generator
 from ase.build import fcc111
 
-slab = fcc111('Al', size=(2,2,3), vacuum=10.0)
+slab = fcc111('Al', size=(2, 2, 3), vacuum=10.0)
 
-convoluted_params = features = ['atomic_number',                                            
-                                'atomic_radius',                                            
-                                'atomic_volume',                                            
-                                'atomic_weight',                                            
-                                'boiling_point',                                            
-                                'covalent_radius_cordero',                                  
-                                'dipole_polarizability',                                    
-                                'electron_affinity',                                        
-                                'en_pauling',                                               
-                                'en_allen',                                                 
-                                'en_ghosh',                                                 
-                                'evaporation_heat',                                         
-                                'fusion_heat',                                              
-                                'group_id',                                                 
-                                'period',                                                   
-                                'heat_of_formation',                                        
-                                'melting_point',                                            
-                                'metallic_radius',                                          
-                                'specific_heat',                                            
-                                'thermal_conductivity',                                     
-                                'vdw_radius',                                               
-                                'd-band_center',                                            
-                                'd-band_width',                                             
-                                'd-band_skewness',                                          
-                                'd-band_kurtosis']     
-
+convoluted_params = [
+    'atomic_number',                                            
+    'atomic_radius',                                            
+    'atomic_volume',                                            
+    'atomic_weight',                                            
+    'boiling_point',                                            
+    'covalent_radius_cordero',                                  
+    'dipole_polarizability',                                    
+    'electron_affinity',                                        
+    'en_pauling',                                               
+    'en_allen',                                                 
+    'en_ghosh',                                                 
+    'evaporation_heat',                                         
+    'fusion_heat',                                              
+    'group_id',                                                 
+    'period',                                                   
+    'heat_of_formation',                                        
+    'melting_point',                                            
+    'metallic_radius',                                          
+    'specific_heat',                                            
+    'thermal_conductivity',                                     
+    'vdw_radius',                                               
+    'd-band_center',                                            
+    'd-band_width',                                             
+    'd-band_skewness',                                          
+    'd-band_kurtosis']     
 
 sfp_gen = Slab_fp_generator()
 
@@ -345,7 +338,6 @@ for i in fp_names:
 
 print('\nComputed slab fingerprints are:\n')
 print(sfp_gen.return_fp(slab, convoluted_params))
-
 #+END_SRC
 
 #+RESULTS:
@@ -421,47 +413,43 @@ Computed slab fingerprints are:
 #+end_example
 
 ** For a list of slab structures
-
 #+BEGIN_SRC python :output results :exports both
-
 from catogm.fingerprint.slab_fp import Slab_fp_generator
 from ase.build import fcc111
 
-slab = fcc111('Al', size=(2,2,3), vacuum=10.0)
-slab1 = fcc111('Pd', size=(2,2,3), vacuum=10.0)
-slab2 = fcc111('Pt', size=(2,2,3), vacuum=10.0)
+slab = fcc111('Al', size=(2, 2, 3), vacuum=10.0)
+slab1 = fcc111('Pd', size=(2, 2, 3), vacuum=10.0)
+slab2 = fcc111('Pt', size=(2, 2, 3), vacuum=10.0)
 
-convoluted_params = features = ['atomic_number',                                            
-                                'atomic_radius',                                            
-                                'atomic_volume',                                            
-                                'atomic_weight',                                            
-                                'boiling_point',                                            
-                                'covalent_radius_cordero',                                  
-                                'dipole_polarizability',                                    
-                                'electron_affinity',                                        
-                                'en_pauling',                                               
-                                'en_allen',                                                 
-                                'en_ghosh',                                                 
-                                'evaporation_heat',                                         
-                                'fusion_heat',                                              
-                                'group_id',                                                 
-                                'period',                                                   
-                                'heat_of_formation',                                        
-                                'melting_point',                                            
-                                'metallic_radius',                                          
-                                'specific_heat',                                            
-                                'thermal_conductivity',                                     
-                                'vdw_radius',                                               
-                                'd-band_center',                                            
-                                'd-band_width',                                             
-                                'd-band_skewness',                                          
-                                'd-band_kurtosis']     
-
+convoluted_params = [
+    'atomic_number',                                            
+    'atomic_radius',                                            
+    'atomic_volume',                                            
+    'atomic_weight',                                            
+    'boiling_point',                                            
+    'covalent_radius_cordero',                                  
+    'dipole_polarizability',                                    
+    'electron_affinity',                                        
+    'en_pauling',                                               
+    'en_allen',                                                 
+    'en_ghosh',                                                 
+    'evaporation_heat',                                         
+    'fusion_heat',                                              
+    'group_id',                                                 
+    'period',                                                   
+    'heat_of_formation',                                        
+    'melting_point',                                            
+    'metallic_radius',                                          
+    'specific_heat',                                            
+    'thermal_conductivity',                                     
+    'vdw_radius',                                               
+    'd-band_center',                                            
+    'd-band_width',                                             
+    'd-band_skewness',                                          
+    'd-band_kurtosis']     
 
 sfp_gen = Slab_fp_generator()
-
 list_slabs = [slab, slab1, slab2]
-
 
 print('Slab fingerprints:\n')
 fp_names = sfp_gen.return_fp_names(convoluted_params)
@@ -470,7 +458,6 @@ for i in fp_names:
 
 print('\nComputed slab fingerprints are:\n')
 print(sfp_gen.return_fp(list_slabs, convoluted_params))
-
 #+END_SRC
 
 #+RESULTS:
@@ -572,12 +559,10 @@ Computed slab fingerprints are:
 #+end_example
 
 * Adsorbate Fingerprint Generation
-
 This class/module is designed to compute the fingerprints for a single adsorbate atoms. However, it can 
 easily be extended to complex adsorbate system.
 
 ** For carbon
-   
 #+BEGIN_SRC python :output results :exports both
 from catogm.fingerprint.adsorbate_fp import Adsorbate_fp_generator
 from ase.atoms import Atoms
@@ -585,27 +570,28 @@ from pprint import pprint
 
 atoms1 = Atoms('C') 
 
-fp_params = ['atomic_number',
-             'atomic_radius',
-             'atomic_volume',
-             'atomic_weight',
-             'boiling_point',
-             'covalent_radius_cordero',
-             'dipole_polarizability',
-             'electron_affinity',
-             'en_pauling',
-             'en_allen',
-             'en_ghosh',
-             'evaporation_heat',
-             'fusion_heat',
-             'group_id',
-             'period',
-             'heat_of_formation',
-             'melting_point',
-             'metallic_radius',
-             'specific_heat',
-             'thermal_conductivity',
-             'vdw_radius']
+fp_params = [
+    'atomic_number',
+    'atomic_radius',
+    'atomic_volume',
+    'atomic_weight',
+    'boiling_point',
+    'covalent_radius_cordero',
+    'dipole_polarizability',
+    'electron_affinity',
+    'en_pauling',
+    'en_allen',
+    'en_ghosh',
+    'evaporation_heat',
+    'fusion_heat',
+    'group_id',
+    'period',
+    'heat_of_formation',
+    'melting_point',
+    'metallic_radius',
+    'specific_heat',
+    'thermal_conductivity',
+    'vdw_radius']
 
 afp_gen = Adsorbate_fp_generator() 
 
@@ -617,7 +603,6 @@ for i in fp_names:
 print('\nComputed adsorbate fingerprints are:\n')
 fp_list = afp_gen.return_fp_list(atoms1, fp_params)
 pprint(fp_list)
-
 #+END_SRC
 
 #+RESULTS:
@@ -672,11 +657,9 @@ Computed adsorbate fingerprints are:
 #+end_example
 
 * Adsorbate-slab Fingerprint Generation 
-
 This class/module is designed to compute the fingerprints for properties related to the adsorbate and surrounnding metal environment.
 
 ** For carbon adsorbed on Pd slab
-
 #+BEGIN_SRC python :output results :exports both
 from catogm.fingerprint.adsorbate_slab_fp import Adsorbate_slab_fp_generator
 from ase.build import fcc111
@@ -686,34 +669,35 @@ from pprint import pprint
 slab = fcc111('Pd', size=(2,2,3), vacuum=10.0)
 add_adsorbate(slab, 'C', 1.5, 'ontop')
 
-ads_metal_params = ['atomic_number',                                            
-                     'atomic_radius',                                            
-                     'atomic_volume',                                            
-                     'atomic_weight',                                            
-                     'boiling_point',                                            
-                     'covalent_radius_cordero',                                  
-                     'dipole_polarizability',                                    
-                     'electron_affinity',                                        
-                     'en_pauling',                                               
-                     'en_allen',                                                 
-                     'en_ghosh',                                                 
-                     'evaporation_heat',                                         
-                     'fusion_heat',                                              
-                     'group_id',                                                 
-                     'period',                                                   
-                     'heat_of_formation',                                        
-                     'melting_point',                                            
-                     'metallic_radius',                                          
-                     'specific_heat',                                            
-                     'thermal_conductivity',                                     
-                     'vdw_radius',
-                     'ads_connectivity']                                               
-                                
-metal_params = ['d-band_center',                                            
-                'd-band_width',                                             
-                'd-band_skewness',                                          
-                'd-band_kurtosis']     
+ads_metal_params = [
+    'atomic_number',                                            
+    'atomic_radius',                                            
+    'atomic_volume',                                            
+    'atomic_weight',                                            
+    'boiling_point',                                            
+    'covalent_radius_cordero',                                  
+    'dipole_polarizability',                                    
+    'electron_affinity',                                        
+    'en_pauling',                                               
+    'en_allen',                                                 
+    'en_ghosh',                                                 
+    'evaporation_heat',                                         
+    'fusion_heat',                                              
+    'group_id',                                                 
+    'period',                                                   
+    'heat_of_formation',                                        
+    'melting_point',                                            
+    'metallic_radius',                                          
+    'specific_heat',                                            
+    'thermal_conductivity',                                     
+    'vdw_radius',
+    'ads_connectivity']                                               
 
+metal_params = [
+    'd-band_center',                                            
+    'd-band_width',                                             
+    'd-band_skewness',                                          
+    'd-band_kurtosis']     
 
 asfp_gen = Adsorbate_slab_fp_generator()
 
@@ -724,8 +708,6 @@ for i in fp_names:
 
 print('\nComputed adsorbate-slab fingerprints are:\n')
 pprint(asfp_gen.return_fp_list(slab, ads_metal_params, metal_params))
-
-
 #+END_SRC
 
 #+RESULTS:
@@ -788,3 +770,4 @@ Computed adsorbate-slab fingerprints are:
  -86.41799377922942,
  3807.841735270619]
 #+end_example
+

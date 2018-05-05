@@ -1,25 +1,15 @@
-#!/usr/bin/env python
 # -*-coding: utf-8 -*-
+# Author: Osman Mamun
 
-#adsorbate_fp.py
-#Osman Mamun
-#LAST UPDATED: 05-02-2018
-
-import os
 import numpy as np
 import json
-from ase.data import atomic_numbers
-import pandas as pd
-from catgen.utils import get_voronoi_neighbors
-from ase.data import atomic_numbers as an
-import multiprocessing
-from tqdm import tqdm
+
 
 class Adsorbate_fp_generator():
     """class to generate adsorbate fingerprint for monoatomic species.
-       This class is easily extensible to more complex molecules. Jacob's 
-       convolution is also an easy solution to complex system."""
-    
+       This class is easily extensible to more complex molecules.
+    """
+
     def __init__(self):
         """Initialize the class.
 
@@ -45,8 +35,6 @@ class Adsorbate_fp_generator():
         fp_names= self.return_fp_names(fp_params)
 
         adsorbate_fp = []
-        
-        
         m_data = self._get_mendeleev_data()
 
         for k in fp_names:
