@@ -3,6 +3,7 @@
 
 import numpy as np
 import json
+import catogm
 
 
 class Adsorbate_fp_generator():
@@ -11,21 +12,15 @@ class Adsorbate_fp_generator():
     """
 
     def __init__(self):
-        """Initialize the class.
-
-        Parameters
-        ----------
-        """
+        """Initialize the class."""
 
     def _get_mendeleev_data(self):
         """Returns the Mendeleev data dictionary"""
-
-        import catogm
         path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
         return json.load(open(path + 'proxy-mendeleev.json'))
 
     def return_fp_list(self, atoms, fp_params):
-
+        """TODO: documentation"""
         if not isinstance(atoms, object):
             raise NotImplementedError('{} data type not implemented.'.format(
                 type(atoms)))
@@ -46,7 +41,7 @@ class Adsorbate_fp_generator():
         return [i if i is not None else np.nan for i in adsorbate_fp]
 
     def return_fp_names(self, fp_params):
-
+        """TODO: documentation"""
         fp_names = [i for i in fp_params]
 
         return fp_names

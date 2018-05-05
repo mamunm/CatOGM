@@ -1,56 +1,37 @@
-#!/usr/bin/env python
 # -*-coding: utf-8 -*-
+# Author: Osman Mamun
 
-# adsorbate_slab_fp.py
-# Osman Mamun
-# LAST UPDATED: 05-02-2018
-
-import os
 import numpy as np
 import json
-from ase.data import atomic_numbers
-import pandas as pd
 from catgen.utils import get_cutoff_neighbors
-from ase.data import atomic_numbers as an
-import multiprocessing
-from tqdm import tqdm
+import catogm
 
 
 class Adsorbate_slab_fp_generator():
-    """class to generate adsorbate-slab fingerprint for monoatomic species.
-       This class is easily extensible to more complex molecules. Jacob's
-       convolution is also an easy solution to complex system."""
+    """Class to generate adsorbate-slab fingerprint for monoatomic species.
+    This class is easily extensible to more complex molecules.
+    """
 
     def __init__(self):
-        """Initialize the class.
-
-        Parameters
-        ----------
-        """
+        """Initialize the class."""
 
     def _get_connectivity(self, atoms):
-        """Returns the connectivity matrix. catgen.utils.get_voronoi_neighbors
-        is used to get the connctivity matrix
-        """
+        """Returns the connectivity matrix."""
         return get_cutoff_neighbors(atoms)
 
     def _get_mendeleev_data(self):
-        """Returns the Mendeleev data dictionary"""
-
-        import catogm
+        """Returns the Mendeleev data dictionary."""
         path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
         return json.load(open(path + 'proxy-mendeleev.json'))
 
     def _get_slab_d_data(self):
         """Returns the slab d band data dictionary"""
-
-        import catogm
         path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
         return np.load(path +
                        'slab_d_band_data.npy', encoding='latin1')[()]
 
     def return_fp_list(self, atoms, ads_metal_params, metal_params):
-
+        """TODO: documentation"""
         if not isinstance(atoms, object):
             raise NotImplementedError('{} data type not implemented.'.format(
                 type(atoms)))
@@ -92,7 +73,7 @@ class Adsorbate_slab_fp_generator():
         return adsorbate_slab_fp
 
     def return_fp_names(self, ads_metal_params, metal_params):
-
+        """TODO: documentation"""
         fp_names = [i for i in ads_metal_params]
         fp_names += [i for i in metal_params]
 

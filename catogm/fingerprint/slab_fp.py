@@ -1,55 +1,37 @@
-#!/usr/bin/env python
 # -*-coding: utf-8 -*-
+# Author: Osman Mamun
 
-# slab_fp.py
-# Osman Mamun
-# LAST UPDATED: 05-02-2018
-
-import os
 import numpy as np
 import json
-from ase.data import atomic_numbers
-import pandas as pd
 from catgen.utils import get_voronoi_neighbors
 from ase.data import atomic_numbers as an
-import multiprocessing
 from tqdm import tqdm
+import catogm
 
 
 class Slab_fp_generator():
     """class to generate slab fingerprint for A1, L10, and L12 structures"""
 
     def __init__(self):
-        """Initialize the class.
-
-        Parameters
-        ----------
-        """
+        """Initialize the class."""
 
     def _get_connectivity(self, atoms):
-        """Returns the connectivity matrix. catgen.utils.get_voronoi_neighbors
-        is used to get the connctivity matrix
-        """
+        """Returns the connectivity matrix."""
         return get_voronoi_neighbors(atoms)
 
     def _get_slab_d_data(self):
         """Returns the slab d band data dictionary"""
-
-        import catogm
         path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
         return np.load(path +
                        'slab_d_band_data.npy', encoding='latin1')[()]
 
     def _get_mendeleev_data(self):
         """Returns the Mendeleev data dictionary"""
-
-        import catogm
         path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
         return json.load(open(path + 'proxy-mendeleev.json'))
 
     def _get_node(self, atoms):
         """Returns the node dictionary"""
-
         con = self._get_connectivity(atoms)
         node_dict = {}
         node_dict[0] = [a.symbol for a in atoms]
@@ -64,7 +46,7 @@ class Slab_fp_generator():
         return node_dict
 
     def return_fp_list(self, atoms, convoluted_params):
-
+        """TODO: documentation"""
         if not isinstance(atoms, object):
             raise NotImplementedError('{} data type not implemented.'.format(
                 type(atoms)))
@@ -112,7 +94,7 @@ class Slab_fp_generator():
         return slab_fp
 
     def return_fp_names(self, convoluted_params):
-
+        """TODO: documentation"""
         fp_names = [i + '_' + str(j)
                     for i in convoluted_params
                     for j in range(2)]
@@ -120,7 +102,7 @@ class Slab_fp_generator():
         return fp_names
 
     def return_fp(self, list_atoms, convoluted_params):
-
+        """TODO: documentation"""
         if not isinstance(list_atoms, (list, object)):
             raise NotImplementedError('{} data type not implemented.'.format(
                 type(list_atoms)))
