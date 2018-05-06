@@ -10,7 +10,7 @@ import catogm
 
 
 class Bulk_fp_generator():
-    """class to generate bulk fingerprint for A1, L10, and L12 structures"""
+    """Class to generate bulk fingerprint for A1, L10, and L12 structures"""
 
     def __init__(self):
         """Initialize the class."""

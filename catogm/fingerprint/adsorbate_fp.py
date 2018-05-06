@@ -7,8 +7,8 @@ import catogm
 
 
 class Adsorbate_fp_generator():
-    """class to generate adsorbate fingerprint for monoatomic species.
-       This class is easily extensible to more complex molecules.
+    """Class to generate adsorbate fingerprint for monoatomic species.
+    This class is easily extensible to more complex molecules.
     """
 
     def __init__(self):
@@ -16,7 +16,7 @@ class Adsorbate_fp_generator():
 
     def _get_mendeleev_data(self):
         """Returns the Mendeleev data dictionary"""
-        path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
+        path = catogm.__file__.rsplit('/', 1)[0] + '/data/'
         return json.load(open(path + 'proxy-mendeleev.json'))
 
     def return_fp_list(self, atoms, fp_params):

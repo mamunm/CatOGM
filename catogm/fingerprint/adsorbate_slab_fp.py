@@ -4,7 +4,7 @@
 import numpy as np
 import json
 from catgen.utils import get_cutoff_neighbors
-import catogm
+import pkg_resources
 
 
 class Adsorbate_slab_fp_generator():
@@ -21,8 +21,14 @@ class Adsorbate_slab_fp_generator():
 
     def _get_mendeleev_data(self):
         """Returns the Mendeleev data dictionary."""
-        path = catogm.__file__.rsplit('/', 1)[0] + '/fingerprint/data/'
-        return json.load(open(path + 'proxy-mendeleev.json'))
+        data_path = pkg_resources.resource_filename(
+            'catogm', 'data/proxy-mendeleev.json')
+        print(data_path)
+
+        with open(data_path) as f:
+            data = json.load(f)
+
+        return data
 
     def _get_slab_d_data(self):
         """Returns the slab d band data dictionary"""
