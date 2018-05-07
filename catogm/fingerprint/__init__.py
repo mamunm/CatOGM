@@ -1,2 +1,3 @@
-# -*-coding: utf-8 -*-
-# Author: Osman Mamun
+from .generator import Fingerprinter
+
+__all__ = ['Fingerprinter']
